@@ -1,0 +1,9 @@
+.checked {
+  color: orange;
+}
+.unchecked {
+  color: grey;
+}
+.unchecked:hover {
+  color: orange;
+}
