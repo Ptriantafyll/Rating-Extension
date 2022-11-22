@@ -9,9 +9,6 @@
   },
   "permissions": ["storage", "webNavigation", "scripting"],
   "host_permissions": ["http://localhost:5000/*"],
-  "content_security_policy": {
-    "extension_pages": "script-src http://localhost;  object-src http://localhost;"
-  },
   "background": {
     "service_worker": "./scripts/Store_User.js"
   }
