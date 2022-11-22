@@ -7,9 +7,9 @@
     "default_popup": "index.html",
     "default_icon": "hello_extensions.png"
   },
-  "permissions": ["storage", "webNavigation", "scripting"],
+  "permissions": ["storage", "webNavigation", "scripting", "tabs"],
   "host_permissions": ["http://localhost:5000/*"],
   "background": {
-    "service_worker": "./scripts/Store_User.js"
+    "service_worker": "./scripts/background.js"
   }
 }
