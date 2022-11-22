@@ -1,4 +1,4 @@
-.checked {
+/* .checked {
   color: orange;
 }
 .unchecked {
@@ -6,4 +6,16 @@
 }
 .unchecked:hover {
   color: orange;
+} */
+
+.parent span {
+  color: grey;
+}
+
+.parent:hover span {
+  color: orange;
+}
+
+.parent span:hover ~ span {
+  color: grey;
 }
