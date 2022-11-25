@@ -9,14 +9,16 @@ chrome.runtime.onInstalled.addListener(() => {
 //   "extension_pages": "script-src http://localhost;  object-src http://localhost;"
 // },
 
-chrome.tabs.onActivated.addListener(async () => {
+// triggered when the user clicks on a tab
+chrome.tabs.onActivated.addListener(() => {
   // console.log("activated");
   getCurrentTab().then((result) => {
     if (result) console.log(result);
   });
 });
 
-chrome.tabs.onUpdated.addListener(async () => {
+// triggered when the user updates the url of the tab
+chrome.tabs.onUpdated.addListener(() => {
   // console.log("updated");
   getCurrentTab().then((result) => {
     if (result) console.log(result);
