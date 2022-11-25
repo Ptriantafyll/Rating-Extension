@@ -5,10 +5,6 @@ chrome.runtime.onInstalled.addListener(() => {
   fetch("http://localhost:5000");
 });
 
-// "content_security_policy": {
-//   "extension_pages": "script-src http://localhost;  object-src http://localhost;"
-// },
-
 // triggered when the user clicks on a tab
 chrome.tabs.onActivated.addListener(() => {
   // console.log("activated");
