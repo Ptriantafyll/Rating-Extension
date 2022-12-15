@@ -2,7 +2,10 @@
 chrome.runtime.onInstalled.addListener(() => {
   // This function should create a random id for a user (maybe in mongodb)
   console.log("Hi, I was installed");
-  fetch("http://localhost:5000");
+  // todo: send a post request to /newuser
+  fetch("http://localhost:5000/newuser", {
+    method: 'POST'
+  });
 });
 
 // triggered when the user clicks on a tab
