@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Url Raring",
+  "name": "Url Rating",
   "description": "Extension that asks the user to rate the current website from a rating 1-5",
   "version": "1.0",
   "action": {
