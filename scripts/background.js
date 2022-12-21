@@ -44,3 +44,8 @@ async function getCurrentTab() {
 
   return tab.url;
 }
+
+function onStarClick(id) {
+  // todo: send a put request with the url and the rating of the current website
+  console.log(id + " was clicked");
+}
