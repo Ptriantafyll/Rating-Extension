@@ -1,7 +1,7 @@
 // Gets called every time the extension is installed
 chrome.runtime.onInstalled.addListener(() => {
   // todo: send a post request to /newuser
-  fetch("http://localhost:5000/newuser", {
+  fetch("http://localhost:5000/user/newuser", {
     method: "POST",
   });
 });
