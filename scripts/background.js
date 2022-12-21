@@ -6,6 +6,7 @@ chrome.runtime.onInstalled.addListener(() => {
   })
     .then((response) => response.json())
     .then((message) => console.log(message));
+  // todo: store username
 });
 
 // triggered when the user clicks on a tab
@@ -48,4 +49,23 @@ async function getCurrentTab() {
 function onStarClick(id) {
   // todo: send a put request with the url and the rating of the current website
   console.log(id + " was clicked");
+  getCurrentTab()
+    .then((result) => {
+      if (result) console.log(result);
+    })
+    .then(() => {
+      fetch("http://localhost:5000", {
+        method: "PUT",
+        // todo: get correct values for the body
+        body: {
+          user: "username",
+          link: { url: "currenturl", rating: "rating" },
+        },
+      })
+        .then((response) => response.json())
+        .then((message) => console.log(message))
+        .catch((err) => {
+          console.log(err);
+        });
+    });
 }
