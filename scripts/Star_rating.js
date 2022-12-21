@@ -10,4 +10,4 @@ for (let i = 0; i < 5; i++) {
   document.getElementById("star-parent").appendChild(mystar);
 }
 
-/* todo: add on click rating -> 1-5 */
+// todo: add on click rating -> 1-5
