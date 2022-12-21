@@ -3,7 +3,9 @@ chrome.runtime.onInstalled.addListener(() => {
   // todo: send a post request to /newuser
   fetch("http://localhost:5000/user/newuser", {
     method: "POST",
-  });
+  })
+    .then((response) => response.json())
+    .then((message) => console.log(message));
 });
 
 // triggered when the user clicks on a tab
@@ -16,7 +18,10 @@ chrome.tabs.onActivated.addListener(() => {
     .then(() => {
       fetch("http://localhost:5000")
         .then((response) => response.json())
-        .then((message) => console.log(message));
+        .then((message) => console.log(message))
+        .catch((err) => {
+          console.log(err);
+        });
     });
 });
 
