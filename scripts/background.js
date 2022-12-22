@@ -5,7 +5,10 @@ chrome.runtime.onInstalled.addListener(() => {
     method: "POST",
   })
     .then((response) => response.json())
-    .then((message) => console.log(message));
+    .then((message) => console.log(message))
+    .catch((err) => {
+      console.log(err);
+    });
   // todo: store username
 });
 
@@ -35,7 +38,7 @@ chrome.tabs.onUpdated.addListener(() => {
 });
 
 async function getCurrentTab() {
-  let queryOptions = { active: true, lastFocusedWindow: true };
+  let queryOptions = { active: true, currentWindow: true };
   // `tab` will either be a `tabs.Tab` instance or `undefined`.
   let [tab] = await chrome.tabs.query(queryOptions);
 
