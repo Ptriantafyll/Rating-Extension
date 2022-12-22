@@ -1,4 +1,28 @@
 body {
   width: 25rem;
-  height: 20rem;
+  height: 5rem;
+}
+
+.parent {
+  width: 4.5rem;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.parent span {
+  color: grey;
+  cursor: pointer;
+  margin-right: 3px;
+}
+
+.parent span:hover::before {
+  color: orange;
+}
+
+.parent span:hover ~ span::before {
+  color: orange;
+}
+
+.parent span:hover ~ span {
+  color: grey;
 }
