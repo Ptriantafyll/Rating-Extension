@@ -10,6 +10,7 @@ function onStarClick(id) {
   getCurrentTab()
     .then((result) => {
       console.log(result);
+      // ? result has the current url
       if (result) console.log(result);
     })
     .then(() => {
