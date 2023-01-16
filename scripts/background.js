@@ -50,3 +50,7 @@ async function getCurrentTab() {
 
   return tab.url;
 }
+
+// chrome.storage.local.get(["username"], (result) => {
+//   console.log("Username: " + result.username);
+// });
