@@ -7,20 +7,18 @@ for (let star of stars) {
 function onStarClick(id) {
   // todo: send a put request with the url and the rating of the current website
   console.log(id + " was clicked");
-  getCurrentTab()
-    .then((result) => {
-      console.log(result);
-      // ? result has the current url
-      if (result) console.log(result);
-    })
-    .then(() => {
-      fetch("http://localhost:5000", {
+  getCurrentTab().then((currenturl) => {
+    chrome.storage.local.get(["user"], (result) => {
+      newrating = {
+        user: result.user,
+        link: { url: currenturl, rating: Number(id[4]) },
+      };
+      fetch("http://localhost:5000/user/newrating", {
         method: "PUT",
-        // todo: get correct values for the body
-        body: {
-          user: "username",
-          link: { url: "currenturl", rating: "rating" },
+        headers: {
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify(newrating),
       })
         .then((response) => response.json())
         .then((message) => console.log(message))
@@ -28,6 +26,7 @@ function onStarClick(id) {
           console.log(err);
         });
     });
+  });
 }
 
 async function getCurrentTab() {
