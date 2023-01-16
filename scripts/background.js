@@ -1,15 +1,17 @@
 // Gets called every time the extension is installed
 chrome.runtime.onInstalled.addListener(() => {
-  // todo: send a post request to /newuser
   fetch("http://localhost:5000/user/newuser", {
     method: "POST",
   })
     .then((response) => response.json())
-    .then((message) => console.log(message))
+    .then((response) => {
+      chrome.storage.local.set({ username: response.userid }, () => {
+        console.log("Username saved on install");
+      });
+    })
     .catch((err) => {
       console.log(err);
     });
-  // todo: store username
 });
 
 // triggered when the user clicks on a tab
