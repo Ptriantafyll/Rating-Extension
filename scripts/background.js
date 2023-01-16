@@ -4,11 +4,14 @@ chrome.runtime.onInstalled.addListener(() => {
     method: "POST",
   })
     .then((response) => response.json())
-    .then((message) => console.log(message))
+    .then((response) => {
+      chrome.storage.local.set({ username: response.userid }, () => {
+        console.log("Username saved on install");
+      });
+    })
     .catch((err) => {
       console.log(err);
     });
-  // todo: store username
 });
 
 // triggered when the user clicks on a tab
