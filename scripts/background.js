@@ -5,7 +5,7 @@ chrome.runtime.onInstalled.addListener(() => {
   })
     .then((response) => response.json())
     .then((response) => {
-      chrome.storage.local.set({ username: response.userid }, () => {
+      chrome.storage.local.set({ user: response.userid }, () => {
         console.log("Username saved on install");
       });
     })
