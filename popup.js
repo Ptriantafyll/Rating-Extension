@@ -5,7 +5,6 @@ for (let star of stars) {
 }
 
 function onStarClick(id) {
-  // todo: send a put request with the url and the rating of the current website
   console.log(id + " was clicked");
   getCurrentTab().then((currenturl) => {
     chrome.storage.local.get(["user"], (result) => {
