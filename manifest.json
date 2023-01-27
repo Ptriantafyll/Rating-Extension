@@ -15,7 +15,7 @@
   "content_scripts": [
     {
       "js": ["scripts/show-rating.js"],
-      "css": ["exponent.css"],
+      "css": ["show_rating.css"],
       "matches": ["<all_urls>"]
     }
   ]
