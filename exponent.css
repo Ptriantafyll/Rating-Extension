@@ -3,7 +3,7 @@
   position: relative;
   top: -0.5em;
   left: 0;
-  background-color: white;
+  background-color: transparent;
   color: attr(link-color);
   padding: 2px;
   visibility: visible;
