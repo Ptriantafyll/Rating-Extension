@@ -1,0 +1,21 @@
+.show-number:hover::after {
+  content: attr(data-random-number);
+  position: relative;
+  top: -0.5em;
+  left: 0;
+  background-color: white;
+  color: attr(link-color);
+  padding: 2px;
+  visibility: visible;
+  opacity: 1;
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
