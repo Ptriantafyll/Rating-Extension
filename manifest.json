@@ -8,8 +8,15 @@
     "default_icon": "hello_extensions.png"
   },
   "permissions": ["storage", "webNavigation", "scripting", "tabs"],
-  "host_permissions": ["http://localhost:5000/*"],
+  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "./scripts/background.js"
-  }
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/show-rating.js"],
+      "css": ["exponent.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
