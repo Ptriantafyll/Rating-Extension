@@ -14,6 +14,18 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 });
 
+chrome.tabs.onActivated.addListener((activeInfo) => {
+  console.log(activeInfo.tabId);
+  let tabId = activeInfo.tabId;
+
+  chrome.scripting
+    .executeScript({
+      target: { tabId: tabId },
+      files: ["scripts/show-rating.js"],
+    })
+    .then(() => console.log("script injected"));
+});
+
 // triggered when the user clicks on a tab
 // chrome.tabs.onActivated.addListener(() => {
 //   // console.log("activated");
