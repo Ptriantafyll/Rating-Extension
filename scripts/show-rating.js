@@ -18,7 +18,6 @@ var colorMap = {
 //   link.setAttribute("link-color", colorMap[randomNumber]);
 // }
 
-// todo: post request to backend and console log result
 var links = document.getElementsByTagName("a");
 var currenturl = window.location.href;
 fetch("http://localhost:5000/user/ratings/639b17c82b8b317c6557989e", {
