@@ -26,14 +26,19 @@ fetch("http://localhost:5000/user/ratings/639b17c82b8b317c6557989e", {
   headers: {
     "Content-Type": "application/json",
   },
-  body: JSON.stringify({ url: "https://en.wikipedia.org/wiki/FIFA_World_Cup" }),
+  mode: "cors",
+  body: JSON.stringify({ url: currenturl }),
 })
   .then((response) => response.json())
-  .then((jsondata) => {
-    console.log(jsondata);
+  .then((data) => {
     for (let link of links) {
-      if (link in jsondata.ratings) {
-        link.style.color = colorMap[jsondata.ratings[link]];
+      if (Object.keys(data.ratings).includes(link.href)) {
+        rating = data.ratings[link];
+        link.style.color = colorMap[rating];
+        link.setAttribute("data-random-number", rating);
+
+        link.classList.add("show-number");
+        link.setAttribute("link-color", rating);
       }
     }
   })
