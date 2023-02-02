@@ -15,15 +15,25 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.tabs.onActivated.addListener((activeInfo) => {
-  console.log(activeInfo.tabId);
-  let tabId = activeInfo.tabId;
+  getCurrentTab()
+    .then((currenturl) => {
+      if (currenturl) {
+        let tabId = activeInfo.tabId;
 
-  chrome.scripting
-    .executeScript({
-      target: { tabId: tabId },
-      files: ["scripts/show-rating.js"],
+        chrome.scripting
+          .executeScript({
+            target: { tabId: tabId },
+            files: ["scripts/show-rating.js"],
+          })
+          .then(() => console.log("script injected"))
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     })
-    .then(() => console.log("script injected"));
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 // triggered when the user clicks on a tab
@@ -50,17 +60,17 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 //   });
 // });
 
-// async function getCurrentTab() {
-//   let queryOptions = { active: true, currentWindow: true };
-//   // `tab` will either be a `tabs.Tab` instance or `undefined`.
-//   let [tab] = await chrome.tabs.query(queryOptions);
+async function getCurrentTab() {
+  let queryOptions = { active: true, currentWindow: true };
+  // `tab` will either be a `tabs.Tab` instance or `undefined`.
+  let [tab] = await chrome.tabs.query(queryOptions);
 
-//   // url is likely to be empty, and filter chrome:// and about:// URLs
-//   if (!tab.url || ["chrome://", "about://"].some((p) => tab.url.startsWith(p)))
-//     return;
+  // url is likely to be empty, and filter chrome:// and about:// URLs
+  if (!tab.url || ["chrome://", "about://"].some((p) => tab.url.startsWith(p)))
+    return;
 
-//   return tab.url;
-// }
+  return tab.url;
+}
 
 // chrome.storage.local.get(["username"], (result) => {
 //   console.log("Username: " + result.username);
