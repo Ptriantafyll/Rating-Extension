@@ -20,7 +20,8 @@ var colorMap = {
 
 var links = document.getElementsByTagName("a");
 var currenturl = window.location.href;
-fetch("http://localhost:5000/user/ratings/639b17c82b8b317c6557989e", {
+// todo: replace string with user from chrome storage
+fetch("http://localhost:5000/user/ratings/6405d70d310ab8c212a97286", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
