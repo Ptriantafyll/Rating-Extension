@@ -12,7 +12,7 @@ function onStarClick(id) {
         user: result.user,
         link: { url: currenturl, rating: Number(id[4]) },
       };
-      fetch("http://localhost:5000/user/newrating", {
+      fetch("http://150.140.193.86:2500/user/newrating", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

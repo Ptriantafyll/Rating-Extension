@@ -20,13 +20,15 @@ var colorMap = {
 
 var links = document.getElementsByTagName("a");
 var currenturl = window.location.href;
-// todo: replace string with user from chrome storage
-fetch("http://localhost:5000/user/ratings/6405d70d310ab8c212a97286", {
+var currentuser;
+chrome.storage.local.get(["user"], (result) => {
+  currentuser = result.user;
+});
+fetch("http://150.140.193.86:2500/user/ratings/" + currentuser, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
   },
-  mode: "cors",
   body: JSON.stringify({ url: currenturl }),
 })
   .then((response) => response.json())

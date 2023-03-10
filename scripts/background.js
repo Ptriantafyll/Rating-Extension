@@ -1,7 +1,8 @@
 // Gets called every time the extension is installed
 chrome.runtime.onInstalled.addListener(() => {
-  fetch("http://localhost:5000/user/newuser", {
+  fetch("http://150.140.193.86:2500/user/newuser", {
     method: "POST",
+    mode: "cors",
   })
     .then((response) => response.json())
     .then((response) => {
