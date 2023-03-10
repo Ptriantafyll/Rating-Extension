@@ -15,6 +15,8 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 });
 
+// todo: this cannot be executed as of now (needs HTTPS)
+// todo: either get https certificate or ignore it and do it localy over http later
 // chrome.tabs.onActivated.addListener((activeInfo) => {
 //   getCurrentTab()
 //     .then((currenturl) => {
