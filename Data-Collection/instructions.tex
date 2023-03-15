@@ -1,18 +1,17 @@
 \documentclass{article}
-\usepackage{lipsum}
 
 \usepackage[LGR, T1]{fontenc} %για γλώσσα
 \usepackage[greek,english]{babel}
 \usepackage[utf8]{inputenc}
 
-\usepackage{graphicx} %για εικόνες
-\usepackage{float} 
-\usepackage{wrapfig} 
+\usepackage{graphicx} % figures
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
 \usepackage{color}   %May be necessary if you want to color links
 \usepackage{textcomp}
 \usepackage{xcolor}
 
-\usepackage{caption}
 \usepackage{hyperref}
 \usepackage{tocloft}
 
@@ -79,13 +78,69 @@
 
 Ο σκοπός της συλλογής δεδομένων από χρήστες που χρησιμοποιούν την επέκταση φυλλομετρητή είναι η ανάπτυξη ενός συστήματος συστάσεων. Αυτό το σύστημα θα μπορεί να προτείνει ποιοι υπερσύνδεσμοι (\selectlanguage{english}URLs\selectlanguage{greek}) ενός ιστοτόπου είναι πιο πιθανό να ενδιαφέρουν το χρήστη. Τα δεδομένα που συλλέγονται θα αναλυθούν χρησιμοποιώντας αλγόριθμους μηχανικής μάθησης για τον εντοπισμό μοτίβων και τάσεων στη συμπεριφορά των χρηστών. Στη συνέχεια, αυτές οι πληροφορίες θα χρησιμοποιηθούν για την εκπαίδευση του συστήματος συστάσεων ώστε να κάνει πιο ακριβείς και χρήσιμες προτάσεις.
 \section*{Οδηγίες Εγκατάστασης}
-\addcontentsline{toc}{section}{Οδηγίες Εγκατάστασης}
 
-Αρχικά θα χρειαστείτε ένα φυλλομετρητή (\selectlanguage{english}Google Chrome\selectlanguage{greek} ή \selectlanguage{english}Firefox\selectlanguage{greek}). Αν δεν έχετε ήδη κάποιον από τους δύο φυλλομετρητές μπορείτε να εγκαταστήσετε το φυλλομετρητή \selectlanguage{english}Google Chrome\selectlanguage{greek} πατώντας \href{https://www.google.com/intl/en_uk/chrome/dr/download/?brand=JJTC&gclid=Cj0KCQjwtsCgBhDEARIsAE7RYh0p-X2d7kNkVFLPkWmugeV2VobmgNNGBRYp2fAA-5cahaJSEYdx50AaAlgwEALw_wcB&gclsrc=aw.ds}{εδώ} και τον \selectlanguage{english}Firefox\selectlanguage{greek} πατώντας \href{https://www.mozilla.org/en-GB/firefox/new/}{εδώ}
+Αρχικά θα χρειαστείτε ένα φυλλομετρητή (\selectlanguage{english}Google Chrome\selectlanguage{greek} ή \selectlanguage{english}Firefox\selectlanguage{greek}). Αν δεν έχετε ήδη κάποιον από τους δύο φυλλομετρητές μπορείτε να εγκαταστήσετε το φυλλομετρητή \selectlanguage{english}Google Chrome\selectlanguage{greek} πατώντας \href{https://www.google.com/intl/en_uk/chrome/dr/download/?brand=JJTC&gclid=Cj0KCQjwtsCgBhDEARIsAE7RYh0p-X2d7kNkVFLPkWmugeV2VobmgNNGBRYp2fAA-5cahaJSEYdx50AaAlgwEALw_wcB&gclsrc=aw.ds}{εδώ} και τον \selectlanguage{english}Firefox\selectlanguage{greek} πατώντας \href{https://www.mozilla.org/en-GB/firefox/new/}{εδώ}.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{logo}
+        \caption{\selectlanguage{english}Google Chrome\selectlanguage{greek}}
+        \label{Fig:sub1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{logo}
+        \caption{\selectlanguage{english}Firefox\selectlanguage{greek}}
+        \label{Fig:sub2}
+    \end{subfigure}
+\end{figure}
+
 % todo add explanation how to download the extension
+\selectlanguage{english}
+\subsection*{Google Chrome}
+\addcontentsline{toc}{subsection}{Google Chrome}
+\selectlanguage{greek}Αν έχετε το φυλλομετρητή \selectlanguage{english}Google Chrome\selectlanguage{greek}, ανοίξτε το φυλλομετρητή σας και μεταβείτε στη σελίδα των επεκτάσεων. Αυτό μπορείτε να το κάνετε πληκτρολογώντας \selectlanguage{english}chrome://extensions\selectlanguage{greek} στη γραμμή διευθύνσεων ή κάνοντας κλικ στο μενού με τις τρις κουκκίδες στην πάνω δεξιά γωνία και επιλέγοντας \textbf{Περρισσότερα Εργαλεία $\rightarrow$ Επεκτάσεις}. Θα πρέπει να έχετε μπροστά σας την παρακάτω οθόνη.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{logo}
+    \caption*{Αρχική οθόνη \selectlanguage{english}chrome://extensions\selectlanguage{greek}}
+\end{figure}
+
+Στη συνέχεια πρέπει να ενεργοποιήσετε τη λειτουργία για προγραμματιστές. Ο τρόπος για να γίνει αυτό είναι κανοντας κλικ στον διακόπτη στην πάνω δεξιά γωνία της σελίδας όπως φαίνεται στην παρακάτω εικόνα.
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{logo}
+    \caption*{Λειτουργία για προγραμματιστές}
+\end{figure}
+
+Μετά πρέπει να φορτώσετε την επέκταση στον \selectlanguage{english}Google Chrome\selectlanguage{greek}. Για να γίνει αυτό πρέπει να πατήσετε στο \selectlanguage{english}Load Unpacked\selectlanguage{greek} (το οποίο εμφανίστηκε αφού ενεργοποιήσατε τη λειτουργία για προγραμματιστές) στο πάνω αριστερό μέρος της σελίδας και να επιλέξετε το φάκελο που έχετε την επέκταση.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{logo}
+        \caption{\selectlanguage{english}Load Unpacked\selectlanguage{greek}}
+        \label{Fig:sub3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{logo}
+        \caption{Επιλογή φακέλου}
+        \label{Fig:sub4}
+    \end{subfigure}
+\end{figure}
+
+Η επέκταση θα πρέπει να έχει εκγατασταθεί με επιτυχία και να βλέπετε την παρακάτω οθόνη
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{logo}
+    \caption*{Επέκταση εγκατεστημένη}
+\end{figure}
+
+\selectlanguage{english}
+\subsection*{Firefox}
+\addcontentsline{toc}{subsection}{Firefox}
+\selectlanguage{greek}
 \section*{Οδηγίες Χρήσης}
 \addcontentsline{toc}{section}{Οδηγίες Χρήσης}
 
 
 \end{document}
-
