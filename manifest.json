@@ -1,5 +1,11 @@
 {
   "manifest_version": 3,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "trintafyllopoulospanos@gmail.com",
+      "strict_min_version": "42.0"
+    }
+  },
   "name": "Url Rating",
   "description": "Extension that asks the user to rate the current website from a rating 1-5. Based on the user's ratings the extension provides recommendations for every url in the page the user is viewing (1-5 rating, 1 being the urls that the user will most likely be interested in, 5 being the urls that the user will least likely be interested in).",
   "version": "1.0",
