@@ -7,7 +7,7 @@ for (let star of stars) {
 function onStarClick(id) {
   console.log(id + " was clicked");
   getCurrentTab().then((currenturl) => {
-    chrome.storage.local.get(["user"], (result) => {
+    browser.storage.local.get(["user"]).then((result) => {
       newrating = {
         user: result.user,
         link: { url: currenturl, rating: Number(id[4]) },
@@ -16,7 +16,11 @@ function onStarClick(id) {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "*",
+          "Access-Control-Allow-Headers": "*",
         },
+        mode: "cors",
         body: JSON.stringify(newrating),
       })
         .then((response) => response.json())
@@ -29,11 +33,7 @@ function onStarClick(id) {
 }
 
 async function getCurrentTab() {
-  let queryOptions = { active: true, currentWindow: true };
-  let [tab] = await chrome.tabs.query(queryOptions);
-
-  if (!tab || ["chrome://", "about://"].some((p) => tab.url.startsWith(p)))
-    return;
-
-  return tab.url;
+  return browser.tabs
+    .query({ active: true, currentWindow: true })
+    .then((tabs) => tabs[0].url);
 }
