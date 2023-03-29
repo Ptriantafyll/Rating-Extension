@@ -1,12 +1,12 @@
 // Gets called every time the extension is installed
-chrome.runtime.onInstalled.addListener(() => {
+browser.runtime.onInstalled.addListener(() => {
   fetch("http://150.140.193.86:2500/user/newuser", {
     method: "POST",
     mode: "cors",
   })
     .then((response) => response.json())
     .then((response) => {
-      chrome.storage.local.set({ user: response.userid }, () => {
+      browser.storage.local.set({ user: response.userid }, () => {
         console.log("Username saved on install");
       });
     })
@@ -39,14 +39,6 @@ chrome.runtime.onInstalled.addListener(() => {
 //     });
 // });
 
-async function getCurrentTab() {
-  let queryOptions = { active: true, currentWindow: true };
-  // `tab` will either be a `tabs.Tab` instance or `undefined`.
-  let [tab] = await chrome.tabs.query(queryOptions);
-
-  // url is likely to be empty, and filter chrome:// and about:// URLs
-  if (!tab.url || ["chrome://", "about://"].some((p) => tab.url.startsWith(p)))
-    return;
-
-  return tab.url;
-}
+// async function getCurrentTab() {
+//   return browser.tabs.query({active: true, currentWindow: true}).then(tabs => tabs[0]);
+// }
