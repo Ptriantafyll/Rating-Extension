@@ -13,7 +13,7 @@
     "default_popup": "index.html",
     "default_icon": "star.png"
   },
-  "permissions": ["storage", "webNavigation", "scripting", "tabs"],
+  "permissions": ["storage", "webNavigation", "scripting", "tabs", "devtools"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "scripts": ["./scripts/background.js"]
