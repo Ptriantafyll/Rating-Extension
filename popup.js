@@ -8,26 +8,6 @@ function onStarClick(id) {
   console.log(id + " was clicked");
   getCurrentTab().then((currenturl) => {
     showSuccessMessage();
-    // chrome.notifications.create(
-    //   "onstarclick",
-    //   {
-    //     type: "basic",
-    //     iconUrl: "./star.png",
-    //     title: "Success",
-    //     message: "Your rating was successful",
-    //     priority: 2,
-    //   },
-    //   () => {
-    //     console.log("Notification shown");
-    //   }
-    // );
-
-    // chrome.notifications.create(
-    //   notificationId?: string,
-    //   options: NotificationOptions,
-    //   callback?: function,
-    // )
-
     chrome.storage.local.get(["user"], (result) => {
       newrating = {
         user: result.user,
