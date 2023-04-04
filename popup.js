@@ -7,25 +7,29 @@ for (let star of stars) {
 function onStarClick(id) {
   console.log(id + " was clicked");
   getCurrentTab().then((currenturl) => {
-    showSuccessMessage();
-    chrome.storage.local.get(["user"], (result) => {
-      newrating = {
-        user: result.user,
-        link: { url: currenturl, rating: Number(id[4]) },
-      };
-      fetch("http://150.140.193.86:2500/user/newrating", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newrating),
-      })
-        .then((response) => response.json())
-        .then((message) => console.log(message))
-        .catch((err) => {
-          console.log(err);
-        });
-    });
+    if (currenturl) {
+      showSuccessMessage();
+      chrome.storage.local.get(["user"], (result) => {
+        newrating = {
+          user: result.user,
+          link: { url: currenturl, rating: Number(id[4]) },
+        };
+        fetch("http://150.140.193.86:2500/user/newrating", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newrating),
+        })
+          .then((response) => response.json())
+          .then((message) => console.log(message))
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    } else {
+      showSuccessMessage();
+    }
   });
 }
 
