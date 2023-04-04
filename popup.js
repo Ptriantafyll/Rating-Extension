@@ -28,7 +28,7 @@ function onStarClick(id) {
           });
       });
     } else {
-      showSuccessMessage();
+      showFailureMessage();
     }
   });
 }
@@ -58,5 +58,23 @@ function showSuccessMessage() {
   // Set a timeout to remove the element after 2 seconds
   setTimeout(() => {
     successMessage.remove();
+  }, 2000);
+}
+
+function showFailureMessage() {
+  // Create the failure message element
+  const failureMessage = document.createElement("div");
+  failureMessage.classList.add("failure-message");
+  failureMessage.innerText = "Sorry, this website cannot be rated";
+
+  // Append it to the DOM
+  document.body.appendChild(failureMessage);
+
+  // Show the element
+  failureMessage.style.display = "block";
+
+  // Set a timeout to remove the element after 2 seconds
+  setTimeout(() => {
+    failureMessage.remove();
   }, 2000);
 }
