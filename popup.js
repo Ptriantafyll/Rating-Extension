@@ -7,6 +7,27 @@ for (let star of stars) {
 function onStarClick(id) {
   console.log(id + " was clicked");
   getCurrentTab().then((currenturl) => {
+    showSuccessMessage();
+    // chrome.notifications.create(
+    //   "onstarclick",
+    //   {
+    //     type: "basic",
+    //     iconUrl: "./star.png",
+    //     title: "Success",
+    //     message: "Your rating was successful",
+    //     priority: 2,
+    //   },
+    //   () => {
+    //     console.log("Notification shown");
+    //   }
+    // );
+
+    // chrome.notifications.create(
+    //   notificationId?: string,
+    //   options: NotificationOptions,
+    //   callback?: function,
+    // )
+
     chrome.storage.local.get(["user"], (result) => {
       newrating = {
         user: result.user,
@@ -36,4 +57,22 @@ async function getCurrentTab() {
     return;
 
   return tab.url;
+}
+
+function showSuccessMessage() {
+  // Create the success message element
+  const successMessage = document.createElement("div");
+  successMessage.classList.add("success-message");
+  successMessage.innerText = "Your rating was successful!";
+
+  // Append it to the DOM
+  document.body.appendChild(successMessage);
+
+  // Show the element
+  successMessage.style.display = "block";
+
+  // Set a timeout to remove the element after 2 seconds
+  setTimeout(() => {
+    successMessage.remove();
+  }, 2000);
 }
