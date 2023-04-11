@@ -3,33 +3,6 @@ const stars = document.getElementsByClassName("fa-star");
 for (let star of stars) {
   star.addEventListener("click", () => onStarClick(star.getAttribute("id")));
 }
-const numberElement = document.getElementById("ratingscounter");
-var currentuser;
-
-if (numberElement.textContent === "") {
-  chrome.storage.local.get(["user"], (result) => {
-    console.log(result);
-    currentuser = result.user;
-    fetch("http://150.140.193.86:2500/user/numofratings/" + currentuser, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((num_of_rated_links) => {
-        console.log(num_of_rated_links);
-        if (num_of_rated_links > 99) {
-          document.getElementById("ratingscounter").textContent =
-            "Thank you for rating 100 websites!";
-        } else {
-          document.getElementById("ratingscounter").textContent =
-            "Number of websites you have rated: " +
-            num_of_rated_links.num_of_rated_links;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
-}
 
 function onStarClick(id) {
   console.log(id + " was clicked");
@@ -49,12 +22,7 @@ function onStarClick(id) {
           body: JSON.stringify(newrating),
         })
           .then((response) => response.json())
-          .then((num_of_rated_links) => {
-            console.log(num_of_rated_links);
-            document.getElementById("ratingscounter").textContent =
-              "Number of websites you have rated: " +
-              num_of_rated_links.num_of_rated_links;
-          })
+          .then((message) => console.log(message))
           .catch((err) => {
             console.log(err);
           });
@@ -69,7 +37,7 @@ async function getCurrentTab() {
   let queryOptions = { active: true, currentWindow: true };
   let [tab] = await chrome.tabs.query(queryOptions);
 
-  if (!tab || ["chrome://", "about://"].some((p) => tab.url.startsWith(p)))
+  if (!tab || ["chrome://", "about:"].some((p) => tab.url.startsWith(p)))
     return;
 
   return tab.url;
