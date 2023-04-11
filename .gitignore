@@ -1,0 +1,14 @@
+Data-Collection/*.aux
+Data-Collection/*.dvi
+Data-Collection/*.fdb_latexmk
+Data-Collection/*.fls
+Data-Collection/*.log
+Data-Collection/*.out
+Data-Collection/*.toc
+Data-Collection/*.synctex.gz
+Data-Collection/structure.txt
+Data-Collection/indent.log
+Data-Collection/*.png
+Data-Collection/*.jpg
+*.tex
+*Identifier
