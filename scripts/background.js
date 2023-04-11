@@ -2,7 +2,6 @@
 browser.runtime.onInstalled.addListener(() => {
   fetch("http://150.140.193.86:2500/user/newuser", {
     method: "POST",
-    mode: "cors",
   })
     .then((response) => response.json())
     .then((response) => {
