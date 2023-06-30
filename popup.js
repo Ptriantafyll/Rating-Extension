@@ -52,7 +52,7 @@ function onStarClick(id) {
         })
           .then((response) => response.json())
           .then((num_of_rated_links) => {
-            showSuccessMessage();
+            showSuccessMessage("Website rated successfully");
             console.log(num_of_rated_links);
             document.getElementById("ratingscounter").textContent =
               "Number of websites you have rated: " +
