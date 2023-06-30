@@ -27,6 +27,9 @@ if (numberElement.textContent === "") {
       })
       .catch((err) => {
         console.log(err);
+        showFailureMessage(
+          "The server is not running, we cannot receive your ratings. Please wait until everything is back up."
+        );
       });
   });
 }
@@ -35,7 +38,6 @@ function onStarClick(id) {
   console.log(id + " was clicked");
   getCurrentTab().then((currenturl) => {
     if (currenturl) {
-      showSuccessMessage();
       chrome.storage.local.get(["user"], (result) => {
         newrating = {
           user: result.user,
@@ -50,6 +52,7 @@ function onStarClick(id) {
         })
           .then((response) => response.json())
           .then((num_of_rated_links) => {
+            showSuccessMessage();
             console.log(num_of_rated_links);
             document.getElementById("ratingscounter").textContent =
               "Number of websites you have rated: " +
@@ -57,10 +60,13 @@ function onStarClick(id) {
           })
           .catch((err) => {
             console.log(err);
+            showFailureMessage(
+              "The server is not running, we cannot receive your ratings. Please wait until everything is back up."
+            );
           });
       });
     } else {
-      showFailureMessage();
+      showFailureMessage("Sorry, this website cannot be rated");
     }
   });
 }
@@ -75,11 +81,11 @@ async function getCurrentTab() {
   return tab.url;
 }
 
-function showSuccessMessage() {
+function showSuccessMessage(message) {
   // Create the success message element
   const successMessage = document.createElement("div");
   successMessage.classList.add("success-message");
-  successMessage.innerText = "Your rating was successful!";
+  successMessage.innerText = message; //"Your rating was successful!";
 
   // Append it to the DOM
   document.body.appendChild(successMessage);
@@ -93,11 +99,11 @@ function showSuccessMessage() {
   }, 2000);
 }
 
-function showFailureMessage() {
+function showFailureMessage(message) {
   // Create the failure message element
   const failureMessage = document.createElement("div");
   failureMessage.classList.add("failure-message");
-  failureMessage.innerText = "Sorry, this website cannot be rated";
+  failureMessage.innerText = message;
 
   // Append it to the DOM
   document.body.appendChild(failureMessage);
