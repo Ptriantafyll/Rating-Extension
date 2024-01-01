@@ -16,7 +16,7 @@ if (numberElement.textContent === "") {
       .then((response) => response.json())
       .then((num_of_rated_links) => {
         console.log(num_of_rated_links);
-        if (num_of_rated_links > 99) {
+        if (num_of_rated_links.num_of_rated_links > 99) {
           document.getElementById("ratingscounter").textContent =
             "Thank you for rating 100 websites!";
         } else {
