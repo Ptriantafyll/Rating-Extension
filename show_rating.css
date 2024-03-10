@@ -11,6 +11,25 @@
   animation: fadein 2s;
 }
 
+.hover-container {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-container:hover::before {
+  content: var(--icon-content); /* Unicode for the Font Awesome icon you want to use */
+  font-family: 'FontAwesome';
+  font-weight: 900;
+  font-size: 26px;
+  color: gold;
+  position: absolute;
+  /* top: 0%; */
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadein 2s;
+}
+
 @keyframes fadein {
   from {
       opacity:0;

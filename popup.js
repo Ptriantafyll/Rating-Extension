@@ -10,7 +10,7 @@ if (numberElement.textContent === "") {
   chrome.storage.local.get(["user"], (result) => {
     console.log(result);
     currentuser = result.user;
-    fetch("http://150.140.193.86:2500/user/numofratings/" + currentuser, {
+    fetch("http://127.0.0.1:5000/user/numofratings/" + currentuser, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -43,7 +43,7 @@ function onStarClick(id) {
           user: result.user,
           link: { url: currenturl, rating: Number(id[4]) },
         };
-        fetch("http://150.140.193.86:2500/user/newrating", {
+        fetch("127.0.0.1:5000/user/newrating", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
