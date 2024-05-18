@@ -2,8 +2,11 @@
 
 ## Contents
 
-- [Overview](#overview)
-- [Deployment](#deployment)
+- [Rating-Extension](#rating-extension)
+  - [Contents](#contents)
+  - [Overview](#overview)
+  - [Deployment](#deployment)
+  - [Usage](#usage)
 
 ## Overview
 
@@ -11,31 +14,29 @@ Browser extension that accepts a rating for the current website from the user
 
 ## Deployment
 
+1. Clone the repository on a local directory.
+2. Go to the Extensions page by entering `chrome://extensions` in a new tab on Google Chrome.
+3. Enable Developer Mode by clicking the toggle switch next to Developer mode on the top right of the page.
+4. Click the Load unpacked button on the top right of the page and select the extension directory. This should install the extension.
+
 For a detailed guide on how to use locally developed browser extensions you can go follow Google's official documentation [here](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/).
-
-First clone the repository on a local directory.
-
-Then go to the Extensions page by entering `chrome://extensions` in a new tab on Google Chrome.
-
-Then enable Developer Mode by clicking the toggle switch next to Developer mode on the top right of the page.
-
-Click the Load unpacked button on the top right of the page and select the extension directory. This should install the extension.
 
 ## Usage
 
 When opening the extension you will see this page:
 
-![](screenshots/extension1.png)
+![Extension start page](screenshots/chromestartpage.png)
 
 You are asked to give a rating from 1-5 for the website you are currently on. After clicking a star a rating is stored on a MongoDB Atlas cluster.
 
-As of now the extension sends a request to the backend, which in turn responds with random ratings (1-5) for the current website's urls and colors them accordingly:
+The extension send a request to the backend when a tab is selected. The backend responds with the prediction of the rating a user would give to the urls of the website based on their content (rating 1-5, 1 means the user would probably not be interested in the content, 5 means the user would probably be interested in the content of the url). When hovering over a url you can see the prediction number as stars.
 
-- Blue: 5
-- Green: 4
-- Yellow: 3
-- Orange: 2
-- Red: 1
+Examples:
 
-An example of the coloring in a wikipedia page.
-![](screenshots/links1.png)
+- Predicted rating 1:
+
+![Rating 1](screenshots/rating1.png)
+
+- Predicted rating 5:
+
+![Rating 5](screenshots/rating5.png)
