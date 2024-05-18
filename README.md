@@ -7,6 +7,7 @@
   - [Overview](#overview)
   - [Deployment](#deployment)
   - [Usage](#usage)
+  - [Api](#api)
 
 ## Overview
 
@@ -40,3 +41,7 @@ Examples:
 - Predicted rating 5:
 
 ![Rating 5](screenshots/rating5.png)
+
+## Api
+
+The backend exists in [this repo](https://github.com/Ptriantafyll/FlaskApi)
